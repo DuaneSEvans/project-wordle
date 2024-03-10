@@ -20,7 +20,7 @@ function Input() {
         id="guess-input"
         type="text"
         value={guess}
-        pattern="\w{5,5}"
+        pattern="[a-zA-Z]{5}"
         onChange={handleInput}
         required
         title="Please enter a 5-letter word."
