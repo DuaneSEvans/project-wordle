@@ -1,6 +1,6 @@
 import React from "react"
 
-function Input() {
+function Input({ setPrevGuesses }) {
   const [guess, setGuess] = React.useState("")
 
   const handleInput = (e) => {
@@ -10,6 +10,7 @@ function Input() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.info({ guess })
+    setPrevGuesses((prev) => [{ guess, id: crypto.randomUUID() }, ...prev])
     setGuess("")
   }
 
