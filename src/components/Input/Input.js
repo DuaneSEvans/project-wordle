@@ -10,7 +10,7 @@ function Input({ setPrevGuesses }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.info({ guess })
-    setPrevGuesses((prev) => [{ guess, id: crypto.randomUUID() }, ...prev])
+    setPrevGuesses((prev) => [...prev, { guess, id: crypto.randomUUID() }])
     setGuess("")
   }
 

@@ -1,17 +1,18 @@
 import React from "react"
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants"
+import { range } from "../../utils"
+import Guess from "../Guess/Guess"
 
-/**
-A new component should be created, to render previous guesses.
-When the user submits their guess, that value should be rendered within this new component.
-There should be no key warnings in the console!
- */
 function PreviousGuesses({ prevGuesses }) {
+  const emptySlots = range(5).map((_) => "")
+  const workingArray = range(NUM_OF_GUESSES_ALLOWED).map((i) =>
+    prevGuesses[i]?.guess ? prevGuesses[i].guess.split("") : emptySlots
+  )
+
   return (
     <div className="guess-results">
-      {prevGuesses.map(({ guess, id }) => (
-        <p className="guess" key={id}>
-          {guess}
-        </p>
+      {workingArray.map((guess, i) => (
+        <Guess guess={guess} key={i} />
       ))}
     </div>
   )
