@@ -10,14 +10,14 @@ function Guess({ guess, answer }) {
   return (
     <p className="guess">
       {result.map(({ letter, status }, i) => {
-        return (
-          <span key={i} className={`cell ${status}`}>
-            {letter}
-          </span>
-        )
+        return <Cell key={i} letter={letter} status={status} />
       })}
     </p>
   )
+}
+
+function Cell({ letter, status }) {
+  return <span className={`cell ${status}`}>{letter}</span>
 }
 
 export default Guess
