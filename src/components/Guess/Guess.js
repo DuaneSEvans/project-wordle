@@ -1,13 +1,21 @@
 import React from "react"
+import { range } from "../../utils"
+import { checkGuess } from "../../game-helpers"
 
-function Guess({ guess }) {
+function Guess({ guess, answer }) {
+  const result = checkGuess(guess, answer)
   return (
     <p className="guess">
-      {guess.map((letter, i) => (
-        <span key={i} className="cell">
-          {letter}
-        </span>
-      ))}
+      {range(5).map((num) => {
+        return (
+          <span
+            key={num}
+            className={`cell ${result ? result[num].status : ""}`}
+          >
+            {result ? result[num].letter : ""}
+          </span>
+        )
+      })}
     </p>
   )
 }

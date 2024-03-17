@@ -14,7 +14,7 @@ function Game() {
   const [prevGuesses, setPrevGuesses] = React.useState([])
   return (
     <>
-      <PreviousGuesses prevGuesses={prevGuesses} />
+      <PreviousGuesses prevGuesses={prevGuesses} answer={answer} />
       <Input setPrevGuesses={setPrevGuesses} />
     </>
   )
