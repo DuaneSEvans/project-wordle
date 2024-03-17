@@ -3,16 +3,16 @@ import { range } from "../../utils"
 import { checkGuess } from "../../game-helpers"
 
 function Guess({ guess, answer }) {
-  const result = checkGuess(guess, answer)
+  const result =
+    checkGuess(guess, answer) ??
+    range(5).map(() => ({ letter: "", status: "" }))
+
   return (
     <p className="guess">
-      {range(5).map((num) => {
+      {result.map(({ letter, status }, i) => {
         return (
-          <span
-            key={num}
-            className={`cell ${result ? result[num].status : ""}`}
-          >
-            {result ? result[num].letter : ""}
+          <span key={i} className={`cell ${status}`}>
+            {letter}
           </span>
         )
       })}
