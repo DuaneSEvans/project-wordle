@@ -1,6 +1,6 @@
 import React from "react"
 
-function Input({ setPrevGuesses }) {
+function Input({ setPrevGuesses, gameOver }) {
   const [guess, setGuess] = React.useState("")
 
   const handleInput = (e) => {
@@ -25,6 +25,7 @@ function Input({ setPrevGuesses }) {
         onChange={handleInput}
         required
         title="Please enter a 5-letter word."
+        disabled={gameOver}
       />
     </form>
   )
